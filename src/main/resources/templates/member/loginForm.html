@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>로그인</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; }
+        body { font-family: 'Nanum Gothic', sans-serif; }
+        li { list-style: none; }
+        a { text-decoration: none; }
+
+        #wrap {
+          width: 320px;
+          margin: 50px auto;
+        }
+
+        #wrap>h1 {
+          position: fixed;
+          left: 0; right: 0; top: 0;
+          font-size: 20px;
+          border-bottom: 1px solid gainsboro;
+          text-align: center;
+          padding: 10px 0;
+        }
+
+        #wrap>img {
+          width: 320px;
+          height: 100px;
+        }
+
+        #wrap>form>input[type=submit] {
+          display: block;
+          margin: 10px auto;
+          width: 320px;
+          padding: 10px;
+          font-size: 16px;
+          background-color: #fee500;
+          border-radius: 5px;
+          border: 1px solid gainsboro;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <h1>로그인</h1>
+        <img src="https://placehold.it/320x100" alt="영차 로고 이미지" />
+        <form action="https://kauth.kakao.com/oauth/authorize" method="get">
+            <input type="hidden" name="client_id" th:value="${kakaoClientId}" />
+            <input type="hidden" name="redirect_uri" th:value="${kakaoRedirectUrl}" />
+            <input type="hidden" name="response_type" value="code" />
+            <input type="submit" value="카카오 로그인" />
+        </form>
+    </div>
+</body>
+</html>

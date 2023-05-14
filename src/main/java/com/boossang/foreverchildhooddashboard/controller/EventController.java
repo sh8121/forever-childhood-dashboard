@@ -13,7 +13,7 @@ public class EventController {
 
     private final EventService eventService;
 
-    @GetMapping("/addEventForm")
+    @GetMapping("/add-event-form")
     public String addEventForm() {
         return "event/addEventForm";
     }
