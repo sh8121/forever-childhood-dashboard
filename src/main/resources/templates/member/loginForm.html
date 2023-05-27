@@ -47,7 +47,7 @@
     <div id="wrap">
         <h1>로그인</h1>
         <img src="https://placehold.it/320x100" alt="영차 로고 이미지" />
-        <form action="https://kauth.kakao.com/oauth/authorize" method="get">
+        <form th:action="${kakaoAuthorizationUrl}" method="get">
             <input type="hidden" name="client_id" th:value="${kakaoClientId}" />
             <input type="hidden" name="redirect_uri" th:value="${kakaoRedirectUrl}" />
             <input type="hidden" name="response_type" value="code" />
