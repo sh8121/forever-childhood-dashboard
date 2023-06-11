@@ -10,12 +10,14 @@ import lombok.Setter;
 @Setter
 public class Member {
     @Id
-    @GeneratedValue
     @Column(name = "MEMBER_ID")
     private Long id;
 
     @Column(name = "NAME")
     private String name;
+
+    @Column(name = "EMAIL")
+    private String email;
 
     @Column(name = "MARRIAGE_YN")
     @Convert(converter = BooleanToYNConverter.class)

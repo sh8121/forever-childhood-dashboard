@@ -2,8 +2,8 @@ package com.boossang.foreverchildhooddashboard.controller;
 
 import com.boossang.foreverchildhooddashboard.property.KakaoProperties;
 import com.boossang.foreverchildhooddashboard.service.MemberService;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +28,11 @@ public class MemberController {
     }
 
     @GetMapping("/login-callback")
-    public String loginCallback(@RequestParam String code) {
-        memberService.login(code);
-        return null;
+    public String loginCallback(@RequestParam String code, HttpServletRequest request) {
+        var member = memberService.login(code);
+        var session = request.getSession();
+        session.setAttribute(Constants.SESSION_LOGIN_KEY, member);
+
+        return "redirect:/";
     }
 }

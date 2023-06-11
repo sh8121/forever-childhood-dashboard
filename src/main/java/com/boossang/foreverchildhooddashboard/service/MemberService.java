@@ -22,7 +22,6 @@ public class MemberService {
     private final KakaoUserClient kakaoUserClient;
     private final MemberRepository memberRepository;
 
-    @Transactional(readOnly = true)
     public Member login(String code) {
         var tokenRequest = new TokenRequestDto();
         tokenRequest.setGrant_type("authorization_code");
@@ -35,8 +34,17 @@ public class MemberService {
 
         var userResult = kakaoUserClient.getUser(tokenResult.getAccess_token());
 
-        log.info("userResult={}", userResult);
+        Member member = null;
+        var memberOpt = memberRepository.findById(userResult.getId());
+        if(memberOpt.isEmpty()) {
+            member = new Member();
+            member.setId(userResult.getId());
+            member.setEmail(userResult.getKakao_account().getEmail());
+            memberRepository.save(member);
+        } else {
+            member = memberOpt.get();
+        }
 
-        return null;
+        return member;
     }
 }
