@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>홈</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; }
+        body { font-family: 'Nanum Gothic', sans-serif; }
+        li { list-style: none; }
+        a { text-decoration: none; }
+
+        #wrap {
+          width: 320px;
+          margin: 50px auto;
+        }
+
+        #wrap>h1 {
+          position: fixed;
+          left: 0; right: 0; top: 0;
+          text-align: center;
+          font-size: 20px;
+          padding: 10px 0;
+          border-bottom: 1px solid dodgerblue;
+          color: dodgerblue;
+        }
+
+        #wrap>img {
+          width: 320px;
+          height: 100px;
+        }
+
+        #wrap>div.button {
+          margin-top: 10px;
+          border: 2px solid dodgerblue;
+          border-radius: 10px;
+          background-color: dodgerblue;
+        }
+
+        #wrap>div.button>a {
+          display: block;
+          text-align: center;
+          padding: 5px;
+          font-size: 18px;
+          color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <h1>영차 홈</h1>
+        <img src="https://placehold.it/320x100" alt="영차 로고 이미지" />
+        <div class="button"><a th:href="@{#}" href="#">회원 관리</a></div>
+        <div class="button"><a th:href="@{#}" href="#">이벤트 관리</a></div>
+    </div>
+</body>
+</html>
